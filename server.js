@@ -1,10 +1,9 @@
 const express = require('express');
 
-const petRouter = require('./routing/petRouter.js');
+const petRouter = require('./routing/petRouter');
 
 const server = express();
-
 server.use(express.json());
-server.use('/api/', petRouter);
+server.use('/api', petRouter);
 
 module.exports = server;

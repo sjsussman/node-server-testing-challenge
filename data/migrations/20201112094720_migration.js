@@ -1,18 +1,14 @@
 exports.up = function (knex) {
-    return knex.schema.table('pets', tbl => {
+    return knex.schema.createTable('pets', tbl => {
         tbl.increments()
         tbl.string('name')
         .notNullable()
         tbl.integer('age')
         .notNullable()
-        tbl.gender('gender')
+        tbl.string('gender')
     })
 }
 
 exports.down = function(knex) {
-    return knex.schema.table('pets', tbl => {
-    tbl.dropColumn('gender')
-    tbl.dropColumn('age')
-    tbl.dropColumn('name')
-    })
+    return knex.schema.dropTableIfExists('pets')
 };
